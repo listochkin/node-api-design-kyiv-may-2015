@@ -1,7 +1,10 @@
 var http = require('http'),
   fs = require('fs'),
   browserify = require('browserify'),
-  es = require("engine.io-stream");
+  es = require("engine.io-stream"),
+  level = require('levelup'),
+  memdown = require('memdown'),
+  multilevel = require('multilevel');
 
 var server = http.createServer(function (req, res) {
   if (req.url === '/') {
@@ -14,7 +17,12 @@ var server = http.createServer(function (req, res) {
   }
 });
 
+var db = level('/db', { db: memdown, valueEncoding: 'json' });
+
+multilevel.writeManifest(db, './manifest.json');
+
 var engine = es(function(connection) {
+  connection.pipe(multilevel.server(db)).pipe(connection);
 });
 
 engine.attach(server, "/messages")
