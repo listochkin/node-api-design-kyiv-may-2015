@@ -20,7 +20,8 @@
   "dependencies": {
     "babel": "^5.4.7",
     "browserify": "^10.2.1",
-    "co": "^4.5.4"
+    "co": "^4.5.4",
+    "engine.io-stream": "^0.4.3"
   },
   "devDependencies": {
     "chai": "^2.3.0",

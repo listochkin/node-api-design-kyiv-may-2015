@@ -1,6 +1,7 @@
 var http = require('http'),
   fs = require('fs'),
-  browserify = require('browserify');
+  browserify = require('browserify'),
+  es = require("engine.io-stream");
 
 var server = http.createServer(function (req, res) {
   if (req.url === '/') {
@@ -12,6 +13,11 @@ var server = http.createServer(function (req, res) {
     res.end();
   }
 });
+
+var engine = es(function(connection) {
+});
+
+engine.attach(server, "/messages")
 
 var port = process.env.PORT || 3000;
 
