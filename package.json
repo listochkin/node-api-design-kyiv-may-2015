@@ -1,0 +1,19 @@
+{
+  "name": "node-api-design-kyiv-may-2015",
+  "version": "1.0.0",
+  "description": "Code Samples for API design with Node JS class - Kiyv, May 2015",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://listochkin@github.com/listochkin/node-api-design-kyiv-may-2015.git"
+  },
+  "author": "Andrey Listochkin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/listochkin/node-api-design-kyiv-may-2015/issues"
+  },
+  "homepage": "https://github.com/listochkin/node-api-design-kyiv-may-2015#readme"
+}
