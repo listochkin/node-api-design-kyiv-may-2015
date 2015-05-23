@@ -31,14 +31,14 @@ describe('Simple tests', () => {
     });
   });
 
-  it('Should run async test with promises and generators', (done) => {
-    co(function* () {
-      const { statusCode, body: html } = yield get('https://nodejs.org/dist/');
-      expect(statusCode).to.equal(200);
-      const window = yield dom(html);
-      const links = window.document.querySelectorAll('a');
-      expect(links.length).to.equal(256);
-      // const [ gr, yr ] = yield [get('https://google.com'), get('http://ya.ru')];
-    }).catch(done).then(done);
-  });
+  const test = generator => done => co(generator).then(done, done);
+
+  it('Should run async test with promises and generators', test(function* () {
+    const { statusCode, body: html } = yield get('https://nodejs.org/dist/');
+    expect(statusCode).to.equal(200);
+    const window = yield dom(html);
+    const links = window.document.querySelectorAll('a');
+    expect(links.length).to.equal(256);
+    // const [ gr, yr ] = yield [get('https://google.com'), get('http://ya.ru')];
+  }));
 });
