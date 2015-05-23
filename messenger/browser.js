@@ -15,4 +15,10 @@ document.querySelector('form').addEventListener('submit', function (event) {
   event.preventDefault();
 });
 
+db.createReadStream().on('data', function (item) {
+  var li = document.createElement('li');
+  li.innerHTML = item.value.text;
+  document.querySelector('ul#messages').appendChild(li);
+});
+
 window.db = db;
