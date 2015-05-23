@@ -1,4 +1,5 @@
 const { assert, expect } = require('chai'),
+  co = require('co'),
   request = require('request'),
   jsdom = require('jsdom');
 
@@ -28,5 +29,16 @@ describe('Simple tests', () => {
         return error ? reject(error) : resolve(response);
       });
     });
+  });
+
+  it('Should run async test with promises and generators', (done) => {
+    co(function* () {
+      const { statusCode, body: html } = yield get('https://nodejs.org/dist/');
+      expect(statusCode).to.equal(200);
+      const window = yield dom(html);
+      const links = window.document.querySelectorAll('a');
+      expect(links.length).to.equal(256);
+      // const [ gr, yr ] = yield [get('https://google.com'), get('http://ya.ru')];
+    }).catch(done).then(done);
   });
 });

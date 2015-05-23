@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/listochkin/node-api-design-kyiv-may-2015#readme",
   "dependencies": {
-    "babel": "^5.4.7"
+    "babel": "^5.4.7",
+    "co": "^4.5.4"
   },
   "devDependencies": {
     "chai": "^2.3.0",
