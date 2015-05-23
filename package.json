@@ -22,6 +22,7 @@
     "browserify": "^10.2.1",
     "co": "^4.5.4",
     "engine.io-stream": "^0.4.3",
+    "level-live-stream": "^1.4.9",
     "levelup": "^1.1.0",
     "memdown": "^1.0.0",
     "multilevel": "^6.1.0"
