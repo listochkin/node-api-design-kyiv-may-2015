@@ -17,4 +17,16 @@ describe('Simple tests', () => {
       });
     });
   });
+
+  const dom = html => new Promise((resolve, reject) => {
+    return jsdom.env(html, (error, window) => error ? reject(error) : resolve(window))
+  });
+
+  const [ get, post ] = ['get', 'post'].map(verb => {
+    return options => new Promise((resolve, reject) => {
+      return request[verb](options, (error, response) => {
+        return error ? reject(error) : resolve(response);
+      });
+    });
+  });
 });
